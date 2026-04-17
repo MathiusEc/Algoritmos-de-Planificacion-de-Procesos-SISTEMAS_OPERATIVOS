@@ -1,15 +1,11 @@
 CC=gcc
-CFLAGS=-Iinclude -Wall -g
-VPATH=src
+CFLAGS=-Wall -g
+TARGET=scheduler_simulation
 
 # Lista de todos los archivos fuente
-SOURCES=$(wildcard src/*.c)
-
-# Genera la lista de archivos objeto a partir de los fuentes
+SOURCES=main.c fcfs.c sjf.c priority.c rr.c
+# Genera la lista de archivos objeto
 OBJECTS=$(SOURCES:.c=.o)
-
-# Nombre del ejecutable final
-TARGET=scheduler_simulation
 
 .PHONY: all clean
 
@@ -18,10 +14,8 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
 
-# Regla para compilar archivos .c a .o
-# Los archivos .c se buscarán en el directorio 'src' (gracias a VPATH)
-%.o: %.c include/scheduler.h include/process.h
+%.o: %.c scheduler.h process.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(TARGET) $(OBJECTS)
+	rm -f $(TARGET) $(OBJECTS) *.exe

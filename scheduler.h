@@ -3,32 +3,24 @@
 
 #include "process.h"
 
-// Define el número de procesos a manejar
-#define NUM_PROCESSES 4
-
 /**
  * @brief Ejecuta el algoritmo First-Come, First-Served (FCFS).
- * @param processes Un arreglo de procesos a planificar.
  */
-void run_fcfs(Process processes[]);
+void schedule_fcfs(Process processes[], int n);
 
 /**
  * @brief Ejecuta el algoritmo Shortest Job First (SJF) No Apropiativo.
- * @param processes Un arreglo de procesos a planificar.
  */
-void run_sjf(Process processes[]);
+void schedule_sjf(Process processes[], int n);
 
 /**
  * @brief Ejecuta el algoritmo de Planificación por Prioridad No Apropiativo.
- * @param processes Un arreglo de procesos a planificar.
  */
-void run_priority(Process processes[]);
+void schedule_priority(Process processes[], int n);
 
 /**
  * @brief Ejecuta el algoritmo Round Robin (RR).
- * @param processes Un arreglo de procesos a planificar.
- * @param quantum El valor del quantum en ms.
  */
-void run_rr(Process processes[], int quantum);
+void schedule_rr(Process processes[], int n, int quantum);
 
 #endif //SCHEDULER_H
