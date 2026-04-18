@@ -12,3 +12,7 @@ Makefile
 # Imágenes y otros assets
 *.png
 *.pdf
+*.csv
+
+#Archivos .py
+*.py
