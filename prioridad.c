@@ -3,7 +3,7 @@
 #include <string.h>
 #include "planificador.h"
 
-void planificarSjf(Process procesos[], int n) {
+void planificarPrioridad(Process procesos[], int n) {
     int tiempoActual = 0;
     int completados = 0;
     int ejecutado[n];
@@ -14,17 +14,17 @@ void planificarSjf(Process procesos[], int n) {
 
     while (completados < n) {
         int idxProcesoSeleccionado = -1;
-        int rafagaMasCorta = INT_MAX;
+        int prioridadMasAlta = INT_MAX;
 
-        // Encontrar el proceso elegible con la ráfaga (burst) más corta
+        // Encontrar el proceso elegible con la prioridad más alta (valor numérico más bajo)
         for (int i = 0; i < n; i++) {
             if (!ejecutado[i] && procesos[i].tiempoLlegada <= tiempoActual) {
-                if (procesos[i].tiempoRafaga < rafagaMasCorta) {
-                    rafagaMasCorta = procesos[i].tiempoRafaga;
+                if (procesos[i].prioridad < prioridadMasAlta) {
+                    prioridadMasAlta = procesos[i].prioridad;
                     idxProcesoSeleccionado = i;
                 }
-                // Desempate: si las ráfagas son iguales, el que llegó primero
-                else if (procesos[i].tiempoRafaga == rafagaMasCorta) {
+                // Desempate: si las prioridades son iguales, el que llegó primero
+                else if (procesos[i].prioridad == prioridadMasAlta) {
                     if (procesos[i].tiempoLlegada < procesos[idxProcesoSeleccionado].tiempoLlegada) {
                         idxProcesoSeleccionado = i;
                     }
@@ -33,13 +33,12 @@ void planificarSjf(Process procesos[], int n) {
         }
 
         if (idxProcesoSeleccionado == -1) {
-            // No hay procesos listos, avanzar el tiempo
             tiempoActual++;
             continue;
         }
 
         int i = idxProcesoSeleccionado;
-        
+
         procesos[i].tiempoInicio = tiempoActual;
         procesos[i].tiempoFin = tiempoActual + procesos[i].tiempoRafaga;
         
@@ -60,7 +59,7 @@ void planificarSjf(Process procesos[], int n) {
     }
     
     // Imprimir resultados
-    imprimirDiagramaGantt(historial, contadorPasos, "SJF (No Apropiativo)");
+    imprimirDiagramaGantt(historial, contadorPasos, "Prioridad (No Apropiativo)");
     imprimirTablaResultados(procesos, n);
 }
 
