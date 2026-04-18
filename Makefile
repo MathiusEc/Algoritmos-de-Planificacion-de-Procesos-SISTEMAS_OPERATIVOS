@@ -1,9 +1,9 @@
 CC=gcc
 CFLAGS=-Wall -g
-TARGET=scheduler_simulation
+TARGET=planificador.exe
 
-# Lista de todos los archivos fuente
-SOURCES=main.c fcfs.c sjf.c priority.c rr.c
+# Lista de todos los archivos fuente (ahora en español)
+SOURCES=main.c fifo.c sjf.c prioridad.c round_robin.c utilidades.c
 # Genera la lista de archivos objeto
 OBJECTS=$(SOURCES:.c=.o)
 
@@ -14,7 +14,8 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
 
-%.o: %.c scheduler.h process.h
+# Dependencias actualizadas a los nuevos nombres de headers
+%.o: %.c planificador.h proceso.h historial.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

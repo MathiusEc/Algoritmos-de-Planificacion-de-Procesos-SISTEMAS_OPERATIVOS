@@ -9,6 +9,17 @@ void limpiarBufferEntrada();
 int obtenerOpcionMenu();
 
 int main() {
+    // --- Encabezado ---
+    printf("SISTEMAS OPERATIVOS\n");
+    printf("ITIZ 2100 / 5473 / 2026-20 \n\n");
+    printf("PROGRAMACION ALGORITMOS DE PLANIFICACION DE PROCESOS \n\n");
+    printf("NOMBRE DE LA PRACTICA:\tPROGRAMACION ALGORITMOS DE PLANIFICACION DE PROCESOS \n");
+    printf("LABORATORIO:\tUPE -315\n");
+    printf("PROFESOR:\tJUAN CARLOS FIGUEROA DURAN\n");
+    printf("FECHA:\t19-04-2026\n\n");
+    printf("Autor (Castillo Mathias) \n");
+    printf("Estudiantes del curso [ITIZ 2100] – [SISTEMAS OPERATIVOS], Universidad de Las Americas, Quito-Ecuador \n\n\n");
+
     Process procesos[5];
     // Datos de los procesos extraídos del informe
     procesos[0] = (Process){"A", 3, 2, 2};
