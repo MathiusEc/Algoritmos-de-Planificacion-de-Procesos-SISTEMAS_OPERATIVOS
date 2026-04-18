@@ -1,0 +1,14 @@
+# Archivos de configuración y metadata
+AGENTS.md
+Makefile
+
+# Directorio del editor de código
+.vscode/
+
+# Archivos compilados y ejecutables
+*.exe
+*.o
+
+# Imágenes y otros assets
+*.png
+*.pdf
